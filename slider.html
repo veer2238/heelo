@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+*,
+*:before,
+*:after{
+ padding: 0;
+ margin: 0;
+ box-sizing: border-box;
+}
+body{
+    height: 100vh;
+    background-color: darkgray;
+}
+    .container{
+ background-color: lightcoral;
+ width: 500px;
+ height: 350px;
+ position: absolute;
+ transform: translate(-50%,-50%);
+ left: 50%;
+ top: 50%;
+ border-radius: 5px;
+ padding: 20px;
+ box-shadow: 0 15px 30px rgba(0,0,0,0.3); 
+  }
+.imgcontainer{
+    position: relative;
+}
+img{
+ position: relative;
+ width: 460px;
+ height: 280px;
+ display: none;
+
+}
+
+.start{
+    display: block;
+}
+#prev,#next{
+ height: 40px;
+ width: 40px;
+ position: absolute;
+ /* background-color: #076bb8; */
+ color: #000000;
+ margin: auto;
+ top: 0;
+ bottom: 0;
+ border: none;
+ border-radius: 3px;
+ font-size: 18px;
+ font-weight: bolder;
+}
+#prev{
+    left: 5px;
+}
+
+#next{
+    right: 5px;
+}
+</style>
+<body>
+    <div class="container">
+        <div class="imgcontainer">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSCZlf5lc5tX-0gY-y94pGS0mQdL-D0lCH2OQ&usqp=CAU" alt="" class="start" id="content1">
+            <img src="https://cdn.pixabay.com/photo/2015/06/19/21/24/avenue-815297_640.jpg" alt="" id="content2">
+            <img src="https://images.pexels.com/photos/326055/pexels-photo-326055.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="" id="content3">
+            <img src="https://images.pexels.com/photos/206359/pexels-photo-206359.jpeg?cs=srgb&dl=pexels-pixabay-206359.jpg&fm=jpg" alt="" id="content4">
+        </div>
+        <button id="prev" onclick="prev()"> &lt; </button>
+        <button id="next" onclick="next()"> &gt; </button>
+    </div>
+</body>
+<script>
+
+
+
+const images = document.querySelectorAll(".imgcontainer img");
+let i = 0; // current slide
+let j = 4;
+function next(){
+ document.getElementById("content" + (i+1)).classList.remove("start");
+ i = ( j + i + 1) % j;
+ document.getElementById("content" + (i+1)).classList.add("start");
+
+}
+function prev(){
+ document.getElementById("content" + (i+1)).classList.remove("start");
+ i = (j + i - 1) % j;
+ document.getElementById("content" + (i+1)).classList.add("start");
+
+}  
+</script>
+</html>
